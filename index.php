@@ -1,4 +1,4 @@
-<?php include('new_user_serv.php') ?>
+<?php include('index-serv.php') ?>
 <!DOCTYPE html>
 <html>
 <head>
