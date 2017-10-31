@@ -5,11 +5,10 @@ DROP TABLE IF EXISTS USERS;
 
 CREATE TABLE USERS(
 	username			VARCHAR(16),
-	password			VARCHAR(16),
+	password			VARCHAR(128),
 	email				VARCHAR(32),
 	phone				CHAR(10),
-	notify_primary		CHAR(2),
-	notify_secondary	CHAR(2),
+	notify				CHAR(6),
 	role				CHAR(4),
 	first				VARCHAR(16),
 	last				VARCHAR(16),
