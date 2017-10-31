@@ -7,7 +7,7 @@
 </head>
 
 
-<form action="new_user_login.php" method = "post">
+<form action="index.php" method = "post">
   <?php include('errors.php'); ?>
 
 		<div class="input-group">
