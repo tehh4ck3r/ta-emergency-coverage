@@ -1,12 +1,26 @@
 <?php
-	// Set up params for database connection
-	$dsn = 'mysql:host=dbserver.engr.scu.edu;dbname=sdb_kmahajan';
-	$uname = 'kmahajan';
-	$pwd = '00001103126';
+	/* C9 Database */
+	$servername = getenv('IP');
+	$username = getenv('C9_USER');
+	$password = "";
+	$database = "c9";
+	$dbport = 3306;
 
-	try {
-		$db_conn = new PDO($dsn, $uname, $pwd);
-	} catch (PDOException $e) {
-		echo 'DB Connection Error: ' . $e->getMessage();
+	// Create connection
+	$db = new mysqli($servername, $username, $password, $database, $dbport);
+	
+	/* EDC Database
+	$servername = "dbserver.engr.scu.edu"
+	$username = "kmahajan";
+	$password = "00001103126";
+	$database = "sdb_kmahajan";
+
+	// Create connection
+	$db = new mysqli($servername, $username, $password, $database); */
+	
+	// Check connection
+	if ($db->connect_error) {
+		die("Connection failed: " . $db->connect_error);
 	}
+	// echo "Connected successfully (".$db->host_info.")";
 ?>
