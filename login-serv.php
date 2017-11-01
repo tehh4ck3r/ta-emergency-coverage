@@ -25,7 +25,7 @@
 			if (mysqli_num_rows($results) == 1) {
 				$_SESSION['username'] = $username;
 				$_SESSION['password'] = $password;
-				header('location: index.php');
+				header('location: ta-list.php');
 			}else {
 				array_push($errors, "Wrong username/password combination");
 			}
