@@ -10,7 +10,7 @@
 	$db = new mysqli($servername, $username, $password, $database, $dbport);
 	
 	/* EDC Database
-	$servername = "dbserver.engr.scu.edu"
+	$servername = "dbserver.engr.scu.edu";
 	$username = "kmahajan";
 	$password = "00001103126";
 	$database = "sdb_kmahajan";
