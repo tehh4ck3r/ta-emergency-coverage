@@ -19,12 +19,14 @@
 
 		if (count($errors) == 0) {
 			$password = md5($password);
-			$query = "SELECT * FROM USERS WHERE username='$username' AND password='$password'";
+			$query = "SELECT ROLE FROM USERS WHERE username='$username' AND password='$password'";
 			$results = mysqli_query($db, $query);
 
 			if (mysqli_num_rows($results) == 1) {
 				$_SESSION['username'] = $username;
 				$_SESSION['password'] = $password;
+				$row = mysqli_fetch_row($results);
+				$_SESSION['role'] = $row[0];
 				header('location: ta-list.php');
 			}else {
 				array_push($errors, "Wrong username/password combination");
