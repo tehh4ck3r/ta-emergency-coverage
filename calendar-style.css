@@ -1,0 +1,85 @@
+ /* Top Navigation Bar */
+.navbar-fixed-top {
+  background: #636b70;
+  min-height: 0;
+  height: 45px;
+  padding: 5px 0;
+  margin-bottom: 0;
+}
+.navbar-header{
+  height: 35px;
+  padding: 5px 0;
+}
+ 
+/* Change the link color to #111 (black) on hover */
+li a:hover {
+    background-color: #111;
+}
+
+.active {
+    background-color: #4CAF50;
+}
+
+/*calendar style*/
+table {
+  font-family: tahoma;
+  width: 100%;
+  border-spacing: 0;
+  border-collapse: separate;
+  table-layout: fixed;
+  margin-bottom: 50px;
+}
+
+th .day {
+  display: block;
+  font-size: 1.2em;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  margin: 0 auto 5px;
+  padding: 5px;
+  line-height: 1.8;
+}
+
+th {
+  background: #626e7e;
+  color: white;
+  padding: 0.5em;
+  overflow: hidden;
+}
+
+th .first-child {
+    border-radius: 3px 0 0 0;
+}
+
+th .last-child {
+  border-radius: 0 3px 0 0;
+}
+
+tr {
+  background: white;
+}
+
+td{
+  text-align: center;
+	vertical-align: middle;
+	border-left: 1px solid #626e7e;
+	position: relative;
+	height: 32px;
+	cursor: pointer;
+}
+
+td .hour{
+		font-size: 2em;
+		padding: 0;
+		color: #626e7e;
+		background:#fff;
+		border-bottom:1px solid #626e7e;
+		border-collapse: separate;
+		min-width: 100px;
+		cursor: default;
+}
+
+td .last-child{
+	border-right:1px solid #626e7e;
+}
