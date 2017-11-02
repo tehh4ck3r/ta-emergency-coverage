@@ -1,12 +1,7 @@
 <?php
 	require('dbconn.php');
-	session_start();
-	if (!isset($_SESSION['username']) && !isset($_SESSION['password'])) {
-		echo($_SESSION['username']);
-		header('location: login.php');
-	}
+	require('auth.php');
 ?>
-
 <!DOCTYPE html>
 <html>
 	<head>
