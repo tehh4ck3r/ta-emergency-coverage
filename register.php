@@ -1,8 +1,12 @@
 <?php 
 	require('register-serv.php');
 	session_start();
-	if (isset($_SESSION['username']) && isset($_SESSION['password'])) {
+	if (isset($_SESSION['username']) && isset($_SESSION['password']) && isset($_SESSION['role'])) {
 		header('location: calendar.php');
+	} else {
+		session_unset();
+		session_destroy();
+		session_start();
 	}
 ?>
 <!DOCTYPE html>
