@@ -14,12 +14,22 @@
 		</div>
 		<div class="content">
 			<?php
-				$query = "SELECT first, last from USERS where role = 'ta'";
+				$query = "SELECT first, last, email, phone, notify from USERS where role = 'ta'";
 				$results = mysqli_query($db, $query, MYSQLI_USE_RESULT);
 				echo('<h2><u>List of TAs</u></h2><br/>');
+				echo ('<table class="table table-striped">');
+				echo ('<tr> <th>Name</th> <th>email</th> <th>phone</th> <th>primary-contact</th> </tr>');
 				foreach ($results as $i) {
-					echo($i['first'].' '. $i['last']);
-					echo("<br/>");
+					echo('<tr>');
+					echo('<td>'.$i['first'].' '. $i['last'].'</td>');
+					echo('<td>'. $i['email'].'</td>');
+					echo('<td>'. $i['phone']. '</td>');
+					if ($i['notify'] == 'email') {
+						echo('<td>Phone</td>');
+					} else {
+						echo('<td><a href="mailto:'.$i['email'].'?$subject=Lab TA Replacement">Email</a></td>');
+					}
+					echo("</tr>");
 				}
 			?>
 		</div>
