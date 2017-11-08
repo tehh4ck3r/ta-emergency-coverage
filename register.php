@@ -49,13 +49,13 @@
 				<label>Confirm Password</label>
 				<input type="password" name="password_2">
 			</div>
-				<div class="input-group">
+			<div class="input-group">
 				<label>Primary Notification</label>
 				<select name="notify">
 				<option Value="phone">Phone</option>
 				<option Value="email">Email</option></select>
 			</div>
-				<div class="input-group">
+			<div class="input-group">
 				<label>Role</label>
 				<select name="role">  
 				<option Value="ta">Teaching Assistant</option>
