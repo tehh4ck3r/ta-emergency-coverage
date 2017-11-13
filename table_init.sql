@@ -8,8 +8,8 @@ CREATE TABLE USERS(
 	password			VARCHAR(128),
 	email				VARCHAR(32),
 	phone				CHAR(10),
-	notify				CHAR(6),
-	role				CHAR(4),
+	notify				ENUM('phone', 'email'),
+	role				ENUM('ta', 'prof'),
 	first				VARCHAR(16),
 	last				VARCHAR(16),
 	PRIMARY KEY (username)
@@ -33,7 +33,7 @@ CREATE TABLE CLASSES(
 	CONSTRAINT prof_fkey
 		FOREIGN KEY (professor)
 			REFERENCES USERS (username)
-	-- TODO: Ensure prof has role set as prof
+	-- TODO: Ensure prof in this table has role set as prof in users
 );
 
 CREATE TABLE STUDENTAVAIL(
