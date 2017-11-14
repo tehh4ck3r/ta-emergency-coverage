@@ -20,7 +20,6 @@
 		if (count($errors) == 0) {
 			$query = "DELETE FROM CLASSES
 			            WHERE section_id = $section_id AND section_date = '$date' AND start_time = '$starttime'";
-			echo($query);
 			mysqli_query($db, $query);
 		}
 	}
