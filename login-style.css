@@ -1,4 +1,35 @@
 
+ /* Top Navigation Bar */
+.navbar-fixed-top {
+  background: #636b70;
+  min-height: 0;
+  height: 45px;
+  padding: 5px 0;
+  margin-bottom: 50px;
+}
+.navbar-header{
+  height: 35px;
+  padding: 5px 0;
+}
+ .navbar-nav {
+  display: inline-block;
+}
+
+.navbar-nav>li {
+   display: inline-block;
+}
+.navbar-right {
+    float: right;
+}
+
+/* Change the link color to #111 (black) on hover */
+li a:hover {
+    background-color: #111;
+}
+
+.active {
+    background-color: #4CAF50;
+}
 
 background-image {
     opacity: 0.5;
