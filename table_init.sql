@@ -21,7 +21,7 @@ CREATE TABLE CLASSES(
 	section_date	DATE,
 	start_time		TIME,
 	end_time		TIME,
-	quarter			CHAR(1),
+	quarter			ENUM('F','W','S'),
 	year			INT,
 	ta				VARCHAR(16),
 	ta_secondary	VARCHAR(16),
