@@ -42,7 +42,7 @@ CREATE TABLE STUDENTAVAIL(
 	section_date	DATE,
 	start_time		TIME,
 	avail_start		TIME,
-	avial_end		TIME,
+	avail_end		TIME,
 	PRIMARY KEY (username, section_id, section_date, start_time),
 	CONSTRAINT avail_username_fkey
 		FOREIGN KEY (username)
