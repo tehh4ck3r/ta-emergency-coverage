@@ -24,116 +24,21 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.min.js"></script>
 
-<script>
-
- $(document).ready(function() {
-  var date = new Date();
-  var d = date.getDate();
-  var m = date.getMonth();
-  var y = date.getFullYear();
-
-  var calendar = $('#calendar').fullCalendar({
-   editable: true,
-   header: {
-    left: 'prev,next today',
-    center: 'title',
-    right: 'month,agendaWeek,agendaDay'
-   },
-
-   events: "/events.php",
-
-   eventRender: function(event, element, view) {
-    if (event.allDay === 'true') {
-     event.allDay = true;
-    } else {
-     event.allDay = false;
-    }
-   },
-   //selectable: true,
-   //selectHelper: true,
-   select: function(start, end, allDay) {
-   var title = prompt('Event Title:');
-
-   if (title) {
-    var start = $.fullCalendar.formatDate(start, "Y-MM-DD HH:mm:ss");
-    var end = $.fullCalendar.formatDate(end, "Y-MM-DD HH:mm:ss");
-    $.ajax({
-	    url: 'add_events.php',
-	    data: 'title='+ title+'&start='+ start +'&end='+ end,
-	    type: "POST",
-	    success: function(json) {
-	     alert('Added Successfully');
-	    }
-    });
-    calendar.fullCalendar('renderEvent',
-    {
-	    title: title,
-	    start: start,
-	    end: end,
-	    allDay: allDay
-    },
-    true
-    );
-   }
-   calendar.fullCalendar('unselect');
-   },
-
-   editable: true,
-   eventDrop: function(event, delta) {
-   var start = $.fullCalendar.formatDate(event.start, "Y-MM-DD HH:mm:ss");
-   var end = $.fullCalendar.formatDate(event.end, "Y-MM-DD HH:mm:ss");
-   $.ajax({
-	   url: 'update_events.php',
-	   data: 'title='+ event.title+'&start='+ start +'&end='+ end +'&id='+ event.id ,
-	   type: "POST",
-	   success: function(json) {
-	    alert("Updated Successfully");
-	   }
-   });
-   },
-   eventClick: function(event) {
-	var decision = confirm("Do you really want to do that?"); 
-	if (decision) {
-	$.ajax({
-		type: "POST",
-		url: "delete_events.php",
-		data: "&id=" + event.id,
-		 success: function(json) {
-			 $('#calendar').fullCalendar('removeEvents', event.id);
-			  alert("Updated Successfully");}
-	});
-	}
-  	},
-   eventResize: function(event) {
-	   var start = $.fullCalendar.formatDate(event.start, "yyyy-MM-dd HH:mm:ss");
-	   var end = $.fullCalendar.formatDate(event.end, "yyyy-MM-dd HH:mm:ss");
-	   $.ajax({
-	    url: 'update_events.php',
-	    data: 'title='+ event.title+'&start='+ start +'&end='+ end +'&id='+ event.id ,
-	    type: "POST",
-	    success: function(json) {
-	     alert("Updated Successfully");
-	    }
-	   });
-	}
-   
-  });
-  
- });
-</script>
 	<nav class="navbar navbar-inverse">
 	  <div class="container-fluid" style="width:100%">
 	    <div class="navbar-header">
-	      <a class="navbar-brand glyphicon glyphicon-home" href="calendar.php">Ta</a>
+	      <a class="navbar-brand glyphicon glyphicon-home" style="font-size:150%" href="calendar.php"></a>
 	    </div>
 	    <ul class="nav navbar-nav" style="display:inline">
-	      <li><a href="inputtime.php">Schedule</a></li>
-	      <li><a href="ta-list.php">Notify</a></li>
+	      <li style="font-size:150%"><a href="inputtime.php">Edit Availability</a></li>
+	      <li style="font-size:150%"><a href="ta-list.php">Notify</a></li>
+	      <li style="font-size:150%"><a href="modify-classes.php">Add Classes</a></li>
+	      <li style="font-size:150%"><a href="delete-classes.php">Remove Classes</a></li>
 	    </ul>
 	    <ul class="nav navbar-nav navbar-right" style= "display:inline">
-	      <li><a href="logout.php"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
-	       <?php echo('<li><a href="login.php"> <span class="glyphicon glyphicon-user"></span>'.$_SESSION['username'].'</a></li>'); ?>
-	       <!- if time should i add modal? ...that when you click on username it display status ta or prof?--->
+	      <li style="font-size:150%"><a href="logout.php"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+	       <?php echo('<li><a style="font-size:150%"> <span class="glyphicon glyphicon-user" ></span> '.$_SESSION['username'].'</a></li>'); ?>
+	       <!-- if time should i add modal? ...that when you click on username it display status ta or prof?--->
 	    </ul>
 	  </div>
 	</nav>
@@ -141,6 +46,7 @@
 
 
 <body>
+ <script src="calendar.js"></script>
  <div class = 'cont' >
   <div id='calendar'></div>
     <div class='my-legend'>
