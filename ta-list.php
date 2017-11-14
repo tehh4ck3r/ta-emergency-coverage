@@ -18,17 +18,20 @@
 	<body style = "background-image:url('https://upload.wikimedia.org/wikipedia/commons/f/f5/Scumission.jpg')">
 	<!--nav bar	-->
 	<nav class="navbar navbar-inverse">
-	  <div class="container-fluid">
+	  <div class="container-fluid" style="width:100%">
 	    <div class="navbar-header">
-	      <a class="navbar-brand glyphicon glyphicon-home" href="calendar.php">Ta</a>
+	      <a class="navbar-brand glyphicon glyphicon-home" style="font-size:150%" href="calendar.php"></a>
 	    </div>
 	    <ul class="nav navbar-nav" style="display:inline">
-	      <li><a href="inputtime.php">Schedule</a></li>
+	      <li><a href="inputtime.php">Edit Availability</a></li>
 	      <li><a href="ta-list.php">Notify</a></li>
+	      <li><a href="modify-classes.php">Add Classes</a></li>
+	      <li><a href="delete-classes.php">Remove Classes</a></li>
 	    </ul>
-	    <ul class="nav navbar-nav navbar-right">
-	      <li><a href="logout.php"><span class="glyphicon glyphicon-log-in"></span> logout</a></li>
-	       <?php echo('<li><a href="login.php"> <span class="glyphicon glyphicon-user"></span>'.$_SESSION['username'].'</a></li>'); ?>
+	    <ul class="nav navbar-nav navbar-right" style= "display:inline">
+	      <li><a href="logout.php"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+	       <?php echo('<li><a> <span class="glyphicon glyphicon-user" ></span> '.$_SESSION['username'].'</a></li>'); ?>
+	       <!-- if time should i add modal? ...that when you click on username it display status ta or prof?-->
 	    </ul>
 	  </div>
 	</nav>
