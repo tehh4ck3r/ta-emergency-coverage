@@ -4,6 +4,7 @@ DROP TABLE IF EXISTS CLASSES;
 DROP TABLE IF EXISTS USERS;
 DROP TABLE IF EXISTS EVENTS;
 DROP TRIGGER IF EXISTS calendar_id;
+DROP TRIGGER IF EXISTS calendar_id_delete;
 
 CREATE TABLE USERS(
 	username			VARCHAR(16),
@@ -31,10 +32,12 @@ CREATE TABLE CLASSES(
 	PRIMARY KEY (section_id, section_date, start_time),
 	CONSTRAINT ta_fkey
 		FOREIGN KEY (ta)
-			REFERENCES USERS (username),
+			REFERENCES USERS (username)
+			ON DELETE CASCADE,
 	CONSTRAINT prof_fkey
 		FOREIGN KEY (professor)
 			REFERENCES USERS (username)
+			ON DELETE CASCADE
 	-- TODO: Ensure prof in this table has role set as prof in users
 );
 
@@ -48,10 +51,12 @@ CREATE TABLE STUDENTAVAIL(
 	PRIMARY KEY (username, section_id, section_date, start_time),
 	CONSTRAINT avail_username_fkey
 		FOREIGN KEY (username)
-			REFERENCES USERS (username),
+			REFERENCES USERS (username)
+			ON DELETE CASCADE,
 	CONSTRAINT sections
 		FOREIGN KEY (section_id, section_date, start_time)
 			REFERENCES CLASSES (section_id, section_date, start_time)
+			ON DELETE CASCADE
 );
 
 CREATE TABLE STUDENTHOURS(
@@ -61,6 +66,7 @@ CREATE TABLE STUDENTHOURS(
 	CONSTRAINT hours_username_fkey
 		FOREIGN KEY (username)
 			REFERENCES USERS (username)
+			ON DELETE CASCADE
 );
 
 CREATE TABLE EVENTS(
@@ -75,3 +81,8 @@ CREATE TRIGGER calendar_id
 AFTER INSERT ON CLASSES
 FOR EACH ROW
 INSERT INTO EVENTS (title, start, end) VALUES (NEW.class_name, TIMESTAMP(NEW.section_date, NEW.start_time), TIMESTAMP(NEW.section_date, NEW.end_time));
+
+CREATE TRIGGER calendar_id_delete
+AFTER DELETE ON CLASSES
+FOR EACH ROW
+DELETE FROM EVENTS WHERE title = OLD.class_name AND start = TIMESTAMP(OLD.section_date, OLD.start_time) AND end = TIMESTAMP(OLD.section_date, OLD.end_time);
