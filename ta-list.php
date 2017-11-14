@@ -24,7 +24,7 @@
 					echo('<td>'.$i['first'].' '. $i['last'].'</td>');
 					echo('<td>'. $i['email'].'</td>');
 					echo('<td>'. $i['phone']. '</td>');
-					if ($i['notify'] == 'email') {
+					if ($i['notify'] == 'phone') {
 						echo('<td>Phone</td>');
 					} else {
 						echo('<td><a href="mailto:'.$i['email'].'?$subject=Lab TA Replacement">Email</a></td>');
