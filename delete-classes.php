@@ -34,4 +34,6 @@
 			<div>
 				<input type="submit" class="btn" name="delete_class" value="Delete Class">
 			</div>
+		</form>
 	</body>
+</html>

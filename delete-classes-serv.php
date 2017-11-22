@@ -4,7 +4,6 @@
 
 	$errors = array(); 
 
-	// REGISTER USER
 	if (isset($_POST['delete_class'])) {
 		// receive all input values from the form
 		$section_id = mysqli_real_escape_string($db, $_POST['section_id']);
@@ -16,7 +15,7 @@
 		if (empty($date)) { array_push($errors, "Date is required"); }
 		if (empty($starttime)) { array_push($errors, "Start time is required"); }
 
-		// add class if there are no errors in the form
+		// remove class if there are no errors in the form
 		if (count($errors) == 0) {
 			$query = "DELETE FROM CLASSES
 			            WHERE section_id = $section_id AND section_date = '$date' AND start_time = '$starttime'";
