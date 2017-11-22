@@ -1,68 +1,74 @@
- /* Top Navigation Bar */
+/* Top Navigation Bar */
 .navbar-fixed-top {
-  background: #636b70;
-  min-height: 0;
-  height: 45px;
-  padding: 5px 0;
-  margin-bottom: 50px;
+	background: #636b70;
+	min-height: 0;
+	height: 45px;
+	padding: 5px 0;
+	margin-bottom: 50px;
 }
+
 .navbar-header{
-  height: 35px;
-  padding: 5px 0;
+	height: 35px;
+	padding: 5px 0;
 }
- .navbar-nav {
-  display: inline-block;
-  width:auto;
+
+.navbar-nav {
+	display: inline-block;
+	width:auto;
 }
 
 .navbar-nav>li {
-   display: inline-block;
+	display: inline-block;
 }
+
 .navbar-right {
-    float: right;
+	float: right;
 }
 
 .my-legend .legend-title {
-    text-align: left;
-    margin: 10px;
-    margin-bottom: 5px;
-    font-weight: bold;
-    font-size: 200%;
-    }
-  .my-legend .legend-scale ul {
-    margin: 10px;
-    margin-bottom: 10px;
-    padding: none;
-    float: left;
-    list-style: none;
-    }
-  .my-legend .legend-scale ul li {
-    font-size: 200%;
-    list-style: none;
-    margin-left: 0;
-    line-height: 18px;
-    margin-bottom: 30px;
-    }
-  .my-legend ul.section-times li span {
-    display: block;
-    float: left;
-    height: 30px;
-    width: 30px;
-    margin-right: 5px;
-    margin-left: 0;
-    border: 1px solid #999;
-    }
-    
+	text-align: left;
+	margin: 10px;
+	margin-bottom: 5px;
+	font-weight: bold;
+	font-size: 200%;
+}
+
+.my-legend .legend-scale ul {
+	margin: 10px;
+	margin-bottom: 10px;
+	padding: none;
+	float: left;
+	list-style: none;
+}
+
+.my-legend .legend-scale ul li {
+	font-size: 200%;
+	list-style: none;
+	margin-left: 0;
+	line-height: 18px;
+	margin-bottom: 30px;
+}
+
+.my-legend ul.section-times li span {
+	display: block;
+	float: left;
+	height: 30px;
+	width: 30px;
+	margin-right: 5px;
+	margin-left: 0;
+	border: 1px solid #999;
+}
+
 #calendar {
-  float:center;
-  width: 850px;
-  margin: 0 auto;
-  margin-top: 40px;
-  text-align: center;
-  font-size: 14px;
-  font-family: "Lucida Grande",Helvetica,Arial,Verdana,sans-serif;
-  }
-  
- cont {
-  display:inline-block;
- }
+	float:center;
+	width: 850px;
+	margin: 0 auto;
+	margin-top: 40px;
+	text-align: center;
+	font-size: 14px;
+	font-family: "Lucida Grande",Helvetica,Arial,Verdana,sans-serif;
+}
+
+cont {
+	display:inline-block;
+}
