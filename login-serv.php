@@ -1,7 +1,7 @@
 <?php
 	require('dbconn.php');
 	require('errors.php');
-    session_start();
+	session_start();
 
 	$errors = array(); 
 
@@ -28,7 +28,7 @@
 				$row = mysqli_fetch_row($results);
 				$_SESSION['role'] = $row[0];
 				header('location: ta-list.php');
-			}else {
+			} else {
 				array_push($errors, "Wrong username/password combination");
 			}
 		}
