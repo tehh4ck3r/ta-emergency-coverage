@@ -13,9 +13,9 @@
 <html>
 	<head>
 		<title>Sign Up</title>
-		<link rel="stylesheet" type="text/css" href="login-style.css">
+		<link rel="stylesheet" type="text/css" href="/css/common.css">
 	</head>
-	<body>
+	<body class="body-bg">
 		<div class="header">
 			<h2>Sign Up</h2>
 		</div>

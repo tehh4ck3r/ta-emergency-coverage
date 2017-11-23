@@ -9,7 +9,7 @@
 <html>
 	<head>
 		<title>Login</title>
-		<link rel="stylesheet" type="text/css" href="login-style.css">
+		<link rel="stylesheet" type="text/css" href="/css/common.css">
 	</head>
 	<body class="body-bg">
 		<!--things to add:-->
