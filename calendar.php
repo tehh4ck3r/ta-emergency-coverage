@@ -47,6 +47,8 @@
 				</ul>
 			</div>
 		</nav>
+
+		<title>TA Emergency Coverage System</title>
 	</head>
 
 	<body>
