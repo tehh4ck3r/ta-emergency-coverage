@@ -11,6 +11,7 @@
 		<link rel="stylesheet" type="text/css" href="calendar-style.css">
 		<link rel="stylesheet" type="text/css" href="legend-style.css">
 		<link rel="stylesheet" type="text/css" href="login-style.css">
+		<link rel="stylesheet" type="text/css" href="/css/navbar.css">
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.7.0/fullcalendar.css" />
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 		
