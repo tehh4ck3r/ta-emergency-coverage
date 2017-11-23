@@ -33,9 +33,9 @@
 				<label>Time</label>
 				<select name="time">
 					<option value="9to12">09:15-12:00</option>
-					<option value="12to2">12:15-02:00</option>
 					<option value="2to5">02:15-05:00</option>
 					<option value="5to8">05:15-08:00</option>
+					<option value="allday">All Day</option>
 				</select>
 			</div>
 			<div class="radio">
