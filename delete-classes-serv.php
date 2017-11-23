@@ -17,9 +17,20 @@
 
 		// remove class if there are no errors in the form
 		if (count($errors) == 0) {
-			$query = "DELETE FROM CLASSES
-			            WHERE section_id = $section_id AND section_date = '$date' AND start_time = '$starttime'";
-			mysqli_query($db, $query);
+			$query = 'DELETE FROM CLASSES WHERE section_id = ? AND section_date = ? AND start_time = ?';
+			$stmt = $db->stmt_init();
+			if (!$stmt->prepare($query)) {
+				die("Faied to prepare statement: ".$query);
+			}
+			else {
+				$stmt->bind_param('iss', $section_id, $date, $starttime);
+				
+				if(!$stmt->execute()) {
+					die("Error in statement execution: ".$stmt->error);
+				}
+				
+				$stmt->close();
+			}
 		}
 	}
 ?>
