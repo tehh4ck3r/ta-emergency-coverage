@@ -12,7 +12,7 @@
 		<link rel="stylesheet" type="text/css" href="legend-style.css">
 		<link rel="stylesheet" type="text/css" href="login-style.css">
 		<link rel="stylesheet" type="text/css" href="/css/navbar.css">
-		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.7.0/fullcalendar.css" />
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.7.0/fullcalendar.css">
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 		
 		<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
@@ -51,12 +51,12 @@
 
 	<body>
 		<script src="calendar.js"></script>
-		<div class = 'cont'>
-			<div id='calendar'></div>
-			<div class='my-legend'>
-				<div class='legend-title'>Section Times</div>
-				<div class='legend-scale'>
-					<ul class='section-times'>
+		<div class="cont">
+			<div id="calendar"></div>
+			<div class="my-legend">
+				<div class="legend-title">Section Times</div>
+				<div class="legend-scale">
+					<ul class="section-times">
 						<li><span style='background:#B30838;'></span>9:15-12:00</li>
 						<li><span style='background:#FEBE10;'></span>2:15-5:00</li>
 						<li><span style='background:#A7A586;'></span>5:15-8:00</li>
