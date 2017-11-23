@@ -32,7 +32,7 @@
 				</div>
 				<ul class="nav navbar-nav" style="display:inline">
 					<li><a href="inputtime.php">Edit Availability</a></li>
-					<li><a href="ta-list.php">Notify</a></li>
+					<li><a href="ta-list.php">Find Replacements</a></li>
 					<?php 
 						if ($_SESSION['role'] == 'prof') {
 							echo('<li><a href="modify-classes.php">Add Classes</a></li>');
