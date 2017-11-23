@@ -40,7 +40,7 @@
 
 		<title>TA Change Times</title>
 	</head>
-	<body>
+	<body class="body-bg">
 		<div class="header">
 			<h2>Modify Times</h2>
 		</div>
