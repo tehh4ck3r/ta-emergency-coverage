@@ -11,11 +11,9 @@
 		<title>Login</title>
 		<link rel="stylesheet" type="text/css" href="login-style.css">
 	</head>
-	<body style = "background-image:url('https://upload.wikimedia.org/wikipedia/commons/f/f5/Scumission.jpg')">
+	<body class="body-bg">
 		<!--things to add:-->
 		<!--security: add professor add code?-->
-		
-		
 		<div class="header">
 			<h2>Login</h2>
 		</div>

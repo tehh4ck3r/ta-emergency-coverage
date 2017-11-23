@@ -1,4 +1,5 @@
-background-image {
+.body-bg {
+	background-image:url('/img/Scumission.jpg')
 	opacity: 0.5;
 	filter: alpha(opacity=50); /* For IE8 and earlier */
 }
