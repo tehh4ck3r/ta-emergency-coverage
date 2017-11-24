@@ -30,7 +30,19 @@
 		<div class="content">
 			<?php
 				$query = "SELECT first, last, email, phone, notify from USERS where role = 'ta'";
-				$results = mysqli_query($db, $query, MYSQLI_USE_RESULT);
+
+				$stmt = $db->stmt_init();
+
+				if (!$stmt->prepare($query)) {
+					die("Faied to prepare statement: ".$query);
+				} 
+
+				if(!$stmt->execute()) {
+					die("Error in statement execution: ".$stmt->error);
+				}
+
+				$results = $stmt->get_result();
+
 				echo('<h2><u>List of TAs</u></h2><br/>');
 				echo ('<table class="table table-striped">');
 				echo ('<tr> <th>Name</th> <th>email</th> <th>phone</th> <th>primary-contact</th> </tr>');
@@ -46,6 +58,7 @@
 					}
 					echo("</tr>");
 				}
+				$stmt->close();
 			?>
 		</div>
 

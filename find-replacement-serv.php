@@ -27,7 +27,8 @@
 		}
 		
 		if (count($errors) == 0) {
-			$query = "SELECT first, last, email, phone, notify FROM USERS NATURAL JOIN STUDENTAVAIL WHERE username != ? AND role = 'ta' AND date = ? AND avail_start = ?";
+			$query = "SELECT first, last, email, phone, notify FROM USERS NATURAL JOIN STUDENTAVAIL 
+						WHERE username != ? AND role = 'ta' AND date = ? AND avail_start = ?";
 			$stmt = $db->stmt_init();
 			if (!$stmt->prepare($query)) {
 				die("Faied to prepare statement: ".$query);

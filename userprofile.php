@@ -30,8 +30,18 @@
 		<div class="content">
 			<?php
 				$username = $_SESSION['username'];
-				$query = "SELECT class_name, section_date, start_time, end_time FROM CLASSES WHERE ta = '$username' AND section_date >= CURDATE()";
-				$results = mysqli_query($db, $query, MYSQLI_USE_RESULT);
+				$query = "SELECT class_name, section_date, start_time, end_time FROM CLASSES WHERE ta = ? AND section_date >= CURDATE()";
+				$stmt = $db->stmt_init();
+				if (!$stmt->prepare($query)) {
+					die("Faied to prepare statement: ".$query);
+				} else {
+					$stmt->bind_param('s', $username);
+				}
+				if(!$stmt->execute()) {
+					die("Error in statement execution: ".$stmt->error);
+				}
+
+				$results = $stmt->get_result();
 				echo('<h2><u>Your Upcoming Labs</u></h2><br/>');
 				echo ('<table class="table table-striped">');
 				echo ('<tr> <th>Class</th> <th>Date</th> <th>Start Time</th> <th>End Time</th> </tr>');
@@ -43,6 +53,7 @@
 					echo('<td>'. $i['end_time']. '</td>');
 					echo("</tr>");
 				}
+				$stmt->close();
 			?>
 		</div>
 	</body>

@@ -28,7 +28,7 @@
 		<div class="header">
 			<h2>Add Classes</h2>
 		</div>
-		
+
 		<form action="modify-classes.php" method="post">
 			<?php include('errors.php'); ?>
 			<div class="input-group">
@@ -50,7 +50,7 @@
 				<label>Date</label>
 				<input type="date" name="date">
 			</div>
-			
+
 			<div class="input-group">
 				<label>Time</label>
 				<select name="time">
@@ -59,14 +59,25 @@
 					<option value="5to8">05:15-08:00</option>
 				</select>
 			</div>
-			
+
 			<div class="input-group">
 				<label>TA</label>
 				<select name="ta">
 					<?php
 						require('dbconn.php');
 						$query = "SELECT first, last, username FROM USERS WHERE role = 'ta'";
-						$results = mysqli_query($db, $query, MYSQLI_USE_RESULT);
+						$stmt = $db->stmt_init();
+
+						if (!$stmt->prepare($query)) {
+							die("Faied to prepare statement: ".$query);
+						} 
+
+						if(!$stmt->execute()) {
+							die("Error in statement execution: ".$stmt->error);
+						}
+
+						$results = $stmt->get_result();
+
 						foreach ($results as $i) {
 							echo('<option value="'.$i['username'].'">'.$i['first'].' '.$i['last'].'</option>');
 						}

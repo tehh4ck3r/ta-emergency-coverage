@@ -19,11 +19,20 @@
 				$end_time = '20:00:00';
 				break;
 		}
-		
-		$query = "INSERT INTO STUDENTAVAIL (username, date, avail_start, avail_end) 
-					VALUES('$username', '$indate', '$start_time', '$end_time')";
-		echo($query);
-		mysqli_query($indb, $query) or array_push($errors, (mysqli_error($indb)));
+
+		$query = "INSERT INTO STUDENTAVAIL (username, date, avail_start, avail_end) VALUES(?, ?, ?, ?)";
+		$stmt = $indb->stmt_init();
+		if (!$stmt->prepare($query)) {
+			die("Faied to prepare statement: ".$query);
+		} else {
+			$stmt->bind_param('ssss', $username, $indate, $start_time, $end_time);
+		}
+
+		if(!$stmt->execute()) {
+				die("Error in statement execution: ".$stmt->error);
+		}
+
+		$stmt->close();
 	}
 	
 	function removeTime($indate, $intime, $indb) {
@@ -42,7 +51,7 @@
 				break;
 		}
 		
-		$query = 'DELETE FROM STUDENTAVAIL WHERE username = ? AND date = ? AND avail_start = ?';
+		$query = "DELETE FROM STUDENTAVAIL WHERE username = ? AND date = ? AND avail_start = ?";
 		$stmt = $indb->stmt_init();
 		if (!$stmt->prepare($query)) {
 			die("Faied to prepare statement: ".$query);

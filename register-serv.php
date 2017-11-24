@@ -34,8 +34,20 @@
 		if (count($errors) == 0) {
 			$password = md5($password_1);	//encrypt the password before saving in the database
 			$query = "INSERT INTO USERS (username, password, email, phone, notify, role, first, last) 
-					  VALUES('$username', '$password', '$email', '$phone', '$notify', '$role', '$firstname', '$lastname')";
-			mysqli_query($db, $query);
+					  VALUES(?, ?, ?, ?, ?, ?, ?, ?)";
+
+			$stmt = $db->stmt_init();
+			if (!$stmt->prepare($query)) {
+				die("Faied to prepare statement: ".$query);
+			} else {
+				$stmt->bind_param('sssissss', $username, $password, $email, $phone, $notify, $role, $firstname, $lastname);
+			} 
+
+			if(!$stmt->execute()) {
+				die("Error in statement execution: ".$stmt->error);
+			}	
+
+			$stmt->close();
 
 			header('location: login.php');
 		}

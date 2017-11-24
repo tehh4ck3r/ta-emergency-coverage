@@ -72,8 +72,20 @@
 		// add class if there are no errors in the form
 		if (count($errors) == 0) {
 			$query = "INSERT INTO CLASSES (class_name, section_id, section_date, start_time, end_time, quarter, year, ta, professor) 
-					  VALUES('$class_name', '$section_id', '$date', '$starttime', '$endtime', '$quarter', '$year', '$ta', '$professor')";
-			mysqli_query($db, $query);
+					  VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)";
+			
+			$stmt = $db->stmt_init();
+			if (!$stmt->prepare($query)) {
+				die("Faied to prepare statement: ".$query);
+			} else {
+				$stmt->bind_param('sissssiss', $class_name, $section_id, $date, $starttime, $endtime, $quarter, $year, $ta, $professor);
+			}
+
+			if(!$stmt->execute()) {
+				die("Error in statement execution: ".$stmt->error);
+			}	
+		
+			$stmt->close();
 		}
 	}
 ?>
