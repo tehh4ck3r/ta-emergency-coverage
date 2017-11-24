@@ -35,14 +35,12 @@
 					<option value="9to12">09:15-12:00</option>
 					<option value="2to5">02:15-05:00</option>
 					<option value="5to8">05:15-08:00</option>
-					<option value="allday">All Day</option>
+					<option value="allday">All of the above</option>
 				</select>
 			</div>
 			<div class="radio">
-				<label><input type="radio" name="avail">I am available for labs occurring at this time on the above date</label>
-			</div>
-			<div class="radio">
-				<label><input type="radio" name="unavail">I am NOT available labs occurring at this time on the above date</label>
+				<label><input type="radio" name="availgroup" value="avail">I am available for labs occurring at this time on the above date</label>
+				<label><input type="radio" name="availgroup" value="unavail">I am NOT available labs occurring at this time on the above date</label>
 			</div>
 			<div class="input-group">
 				<button type="submit" class="btn" name="ta_times">Submit</button>

@@ -43,19 +43,13 @@ CREATE TABLE CLASSES(
 
 CREATE TABLE STUDENTAVAIL(
 	username		VARCHAR(16),
-	section_id		INT,
-	section_date	DATE,
-	start_time		TIME,
+	date			DATE,
 	avail_start		TIME,
 	avail_end		TIME,
-	PRIMARY KEY (username, section_id, section_date, start_time),
+	PRIMARY KEY (username, date, avail_start),
 	CONSTRAINT avail_username_fkey
 		FOREIGN KEY (username)
 			REFERENCES USERS (username)
-			ON DELETE CASCADE,
-	CONSTRAINT sections
-		FOREIGN KEY (section_id, section_date, start_time)
-			REFERENCES CLASSES (section_id, section_date, start_time)
 			ON DELETE CASCADE
 );
 
