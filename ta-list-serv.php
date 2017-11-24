@@ -29,5 +29,6 @@
 		}
 		echo("</tr>");
 	}
+	echo("</table>");
 	$stmt->close();
 ?>
