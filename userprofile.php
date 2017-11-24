@@ -31,7 +31,6 @@
 			<?php
 				$username = $_SESSION['username'];
 				$query = "SELECT class_name, section_date, start_time, end_time FROM CLASSES WHERE ta = '$username' AND section_date >= CURDATE()";
-				echo $query;
 				$results = mysqli_query($db, $query, MYSQLI_USE_RESULT);
 				echo('<h2><u>Your Upcoming Labs</u></h2><br/>');
 				echo ('<table class="table table-striped">');

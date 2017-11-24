@@ -11,8 +11,7 @@
 		$catalognum = mysqli_real_escape_string($db, $_POST['catalognum']);
 		$section_id = mysqli_real_escape_string($db, $_POST['section_id']);
 		$date = mysqli_real_escape_string($db, $_POST['date']);
-		$starttime = mysqli_real_escape_string($db, $_POST['starttime']);
-		$endtime = mysqli_real_escape_string($db, $_POST['endtime']);
+		$timeinput = mysqli_real_escape_string($db, $_POST['time']);
 		
 		$datetoken = mysqli_real_escape_string($db, $_POST['date']);
 		$year = strtok($datetoken, "-");
@@ -27,7 +26,7 @@
 			case 4:
 			case 5:
 			case 6:
-				$quarter = 'W';
+				$quarter = 'S';
 				break;
 			case 9:
 			case 10:
@@ -41,14 +40,31 @@
 
 		$ta = mysqli_real_escape_string($db, $_POST['ta']);
 		$role = mysqli_real_escape_string($db, $_POST['role']);
+		
 
 		// form validation: ensure that the form is correctly filled
 		if (empty($department)) { array_push($errors, "Department is required"); }
 		if (empty($catalognum)) { array_push($errors, "Catalog number is required"); }
 		if (empty($section_id)) { array_push($errors, "Section ID is required"); }
 		if (empty($date)) { array_push($errors, "Date is required"); }
-		if (empty($starttime)) { array_push($errors, "Start time is required"); }
-		if (empty($endtime)) { array_push($errors, "End time is required"); }
+		if (empty($timeinput)) { array_push($errors, "Time is required"); }
+		
+		$starttime = '00:00:00';
+		$endtime = '00:00:00';
+		switch ($timeinput) {
+			case '9to12':
+				$starttime = '09:15:00';
+				$endtime = '12:00:00';
+				break;
+			case '2to5':
+				$starttime = '14:15:00';
+				$endtime = '17:00:00';
+				break;
+			case '5to8':
+				$starttime = '17:15:00';
+				$endtime = '20:00:00';
+				break;
+		}
 		
 		$class_name = $department.' '.$catalognum;
 		$professor = $_SESSION['username'];

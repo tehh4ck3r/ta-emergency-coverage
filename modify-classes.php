@@ -52,13 +52,12 @@
 			</div>
 			
 			<div class="input-group">
-				<label>Start Time</label>
-				<input type="text" name="starttime">
-			</div>
-			
-			<div class="input-group">
-				<label>End Time</label>
-				<input type="text" name="endtime">
+				<label>Time</label>
+				<select name="time">
+					<option value="9to12">09:15-12:00</option>
+					<option value="2to5">02:15-05:00</option>
+					<option value="5to8">05:15-08:00</option>
+				</select>
 			</div>
 			
 			<div class="input-group">
