@@ -18,7 +18,7 @@
 		</ul>
 		<ul class="nav navbar-nav navbar-right" style= "display:inline">
 			<li><a href="logout.php"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
-			<?php echo('<li><a href="navbar.php"><span class="glyphicon glyphicon-user" ></span>'.$_SESSION['username'].'</a></li>'); ?>
+			<?php echo('<li><a href="userprofile.php"><span class="glyphicon glyphicon-user" ></span>'.$_SESSION['username'].'</a></li>'); ?>
 			<!-- if time should i add modal? ...that when you click on username it display status ta or prof? -->
 		</ul>
 	</div>
