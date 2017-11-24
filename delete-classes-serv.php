@@ -21,16 +21,14 @@
 			$stmt = $db->stmt_init();
 			if (!$stmt->prepare($query)) {
 				die("Faied to prepare statement: ".$query);
-			}
-			else {
+			} else {
 				$stmt->bind_param('iss', $section_id, $date, $starttime);
-				
-				if(!$stmt->execute()) {
-					die("Error in statement execution: ".$stmt->error);
-				}
-				
-				$stmt->close();
 			}
+			if(!$stmt->execute()) {
+				die("Error in statement execution: ".$stmt->error);
+			}
+				
+			$stmt->close();
 		}
 	}
 ?>
