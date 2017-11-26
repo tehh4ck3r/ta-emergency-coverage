@@ -12,7 +12,7 @@ $(document).ready(function() {
 			right: 'month,agendaWeek,agendaDay'
 		},
 
-		events: "/events.php",
+		events: "events.php",
 
 		eventRender: function(event, element, view) {
 			if (event.allDay === 'true') {
