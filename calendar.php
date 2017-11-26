@@ -1,6 +1,5 @@
 <?php
 	require('auth.php');
-	require('dbconn.php');
 ?>
 <!DOCTYPE html>
 <html>
@@ -8,10 +7,10 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		
-		<link rel="stylesheet" type="text/css" href="/css/calendar-style.css">
-		<link rel="stylesheet" type="text/css" href="/css/legend-style.css">
-		<link rel="stylesheet" type="text/css" href="/css/common.css">
-		<link rel="stylesheet" type="text/css" href="/css/navbar.css">
+		<link rel="stylesheet" type="text/css" href="css/calendar-style.css">
+		<link rel="stylesheet" type="text/css" href="css/legend-style.css">
+		<link rel="stylesheet" type="text/css" href="css/common.css">
+		<link rel="stylesheet" type="text/css" href="css/navbar.css">
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.7.0/fullcalendar.css">
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 		
@@ -34,7 +33,7 @@
 		<script src="calendar.js"></script>
 		<div class="cont">
 			<div id="calendar"></div>
-			<div class="my-legend">
+			<!-- <div class="my-legend">
 				<div class="legend-title">Section Times</div>
 				<div class="legend-scale">
 					<ul class="section-times">
@@ -44,7 +43,7 @@
 						<li><span style='background:#FB8072;'></span>Other</li>
 					</ul>
 				</div>
-			</div>
+			</div> -->
 		</div>
 	</body>
 </html>
