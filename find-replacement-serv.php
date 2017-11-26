@@ -42,7 +42,7 @@
 			
 			$results = $stmt->get_result();
 			echo ('<table class="table table-striped">');
-			echo ('<tr> <th>Name</th> <th>email</th> <th>phone</th> <th>primary-contact</th> </tr>');
+			echo ('<tr> <th>Name</th> <th>Email</th> <th>Phone</th> <th>Primary Contact</th> </tr>');
 			foreach ($results as $i) {
 				echo('<tr>');
 				echo('<td>'.$i['first'].' '. $i['last'].'</td>');
