@@ -27,66 +27,67 @@
 		<div class="header">
 			<h2>Add Classes</h2>
 		</div>
+		<div class="content">
+			<form action="modify-classes.php" method="post">
+				<?php include('errors.php'); ?>
+				<div class="input-group">
+					<label>Department</label>
+					<input type="text" name="department"> 
+				</div>
+				
+				<div class="input-group">
+					<label>Catalog Number</label>
+					<input type="text" name="catalognum">
+				</div>
+				
+				<div class="input-group">
+					<label>Section ID</label>
+					<input type="text" name="section_id">
+				</div>
+				
+				<div class="input-group">
+					<label>Date</label>
+					<input type="date" name="date">
+				</div>
 
-		<form action="modify-classes.php" method="post">
-			<?php include('errors.php'); ?>
-			<div class="input-group">
-				<label>Department</label>
-				<input type="text" name="department"> 
-			</div>
-			
-			<div class="input-group">
-				<label>Catalog Number</label>
-				<input type="text" name="catalognum">
-			</div>
-			
-			<div class="input-group">
-				<label>Section ID</label>
-				<input type="text" name="section_id">
-			</div>
-			
-			<div class="input-group">
-				<label>Date</label>
-				<input type="date" name="date">
-			</div>
+				<div class="input-group">
+					<label>Time</label>
+					<select name="time">
+						<option value="9to12">09:15-12:00</option>
+						<option value="2to5">02:15-05:00</option>
+						<option value="5to8">05:15-08:00</option>
+					</select>
+				</div>
 
-			<div class="input-group">
-				<label>Time</label>
-				<select name="time">
-					<option value="9to12">09:15-12:00</option>
-					<option value="2to5">02:15-05:00</option>
-					<option value="5to8">05:15-08:00</option>
-				</select>
-			</div>
+				<div class="input-group">
+					<label>TA</label>
+					<select name="ta">
+						<?php
+							require('dbconn.php');
+							$query = "SELECT first, last, username FROM USERS WHERE role = 'ta'";
+							$stmt = $db->stmt_init();
 
-			<div class="input-group">
-				<label>TA</label>
-				<select name="ta">
-					<?php
-						require('dbconn.php');
-						$query = "SELECT first, last, username FROM USERS WHERE role = 'ta'";
-						$stmt = $db->stmt_init();
+							if (!$stmt->prepare($query)) {
+								die("Faied to prepare statement: ".$query);
+							} 
 
-						if (!$stmt->prepare($query)) {
-							die("Faied to prepare statement: ".$query);
-						} 
+							if(!$stmt->execute()) {
+								die("Error in statement execution: ".$stmt->error);
+							}
 
-						if(!$stmt->execute()) {
-							die("Error in statement execution: ".$stmt->error);
-						}
+							$results = $stmt->get_result();
 
-						$results = $stmt->get_result();
-
-						foreach ($results as $i) {
-							echo('<option value="'.$i['username'].'">'.$i['first'].' '.$i['last'].'</option>');
-						}
-					?>
-				</select>
-			</div>
-			
-			<div>
-				<input type="submit" class="btn" name="add_class" value="Add Class">
-			</div>
-		</form>
+							foreach ($results as $i) {
+								echo('<option value="'.$i['username'].'">'.$i['first'].' '.$i['last'].'</option>');
+							}
+						?>
+					</select>
+				</div>
+				
+				<div>
+					<input type="submit" class="btn" name="add_class" value="Add Class">
+				</div>
+			</form>
+		</div>
 	</body>
 </html>

@@ -26,23 +26,25 @@
 		</div>
 
 		<!--The content-->
-		<div class="content"><form action="find-replacement.php" method="post">
-			<div class="input-group">
-				<label>Date</label>
-				<input type="date" name="date">
-			</div>
-			<div class="input-group">
-				<label>Time</label>
-				<select name="time">
-					<option value="9to12">09:15-12:00</option>
-					<option value="2to5">02:15-05:00</option>
-					<option value="5to8">05:15-08:00</option>
-				</select>
-			</div>
-			<div class="input-group">
-				<button type="submit" class="btn" name="replacements">Submit</button>
-			</div>
-		</form>
-		<?php require('find-replacement-serv.php'); ?></div>
+		<div class="content">
+			<form action="find-replacement.php" method="post">
+				<div class="input-group">
+					<label>Date</label>
+					<input type="date" name="date">
+				</div>
+				<div class="input-group">
+					<label>Time</label>
+					<select name="time">
+						<option value="9to12">09:15-12:00</option>
+						<option value="2to5">02:15-05:00</option>
+						<option value="5to8">05:15-08:00</option>
+					</select>
+				</div>
+				<div class="input-group">
+					<button type="submit" class="btn" name="replacements">Submit</button>
+				</div>
+			</form>
+			<?php require('find-replacement-serv.php'); ?>
+		</div>
 	</body>
 </html>

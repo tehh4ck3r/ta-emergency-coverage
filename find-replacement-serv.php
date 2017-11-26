@@ -1,7 +1,7 @@
 <?php
 	require('dbconn.php');
-	require('errors.php');
 	$errors = array(); 
+	require('errors.php');
 	
 	if (isset($_POST['replacements'])) {
 		$date = $_POST['date'];
