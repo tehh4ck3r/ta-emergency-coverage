@@ -38,8 +38,6 @@
 		}
 
 		$ta = mysqli_real_escape_string($db, $_POST['ta']);
-		$role = mysqli_real_escape_string($db, $_POST['role']);
-		
 
 		// form validation: ensure that the form is correctly filled
 		if (empty($department)) { array_push($errors, "Department is required"); }
