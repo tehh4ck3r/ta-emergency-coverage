@@ -4,7 +4,7 @@
 	require('errors.php');
 	
 	if (isset($_POST['replacements'])) {
-		$date = $_POST['date'];
+		$date = mysqli_real_escape_string($db, $_POST['date']);
 		$timeinput = mysqli_real_escape_string($db, $_POST['time']);
 		
 		if (empty($date)) { array_push($errors, "Date is required"); }
