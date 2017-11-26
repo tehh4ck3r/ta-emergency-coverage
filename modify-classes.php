@@ -5,7 +5,6 @@
 		exit;
 	}
 	require('modify-classes-serv.php');
-	$errors = array();
 ?>
 <!DOCTYPE html>
 <html>

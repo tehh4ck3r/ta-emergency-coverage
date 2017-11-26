@@ -1,6 +1,5 @@
 <?php
 	require('dbconn.php');
-	require('errors.php');
 	session_start();
 
 	$errors = array(); 

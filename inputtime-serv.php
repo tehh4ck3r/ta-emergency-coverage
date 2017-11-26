@@ -1,7 +1,6 @@
 <?php
 	require('dbconn.php');
-	require('errors.php');
-	$errors = array(); 
+	$errors = array();
 	
 	function putInTime($indate, $intime, $indb) {
 		global $errors;

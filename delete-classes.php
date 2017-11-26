@@ -5,7 +5,6 @@
 		exit;
 	}
 	require('delete-classes-serv.php');
-	$errors = array();
 ?>
 <!DOCTYPE html>
 <html>
