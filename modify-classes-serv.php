@@ -1,9 +1,15 @@
 <?php
+	/* modify-classes-serv.php: handles the server-side portion of adding classes. 
+	 * 
+	 * Takes user input for a department, catalog number, section ID, date, time,
+	 * and default TA, then inserts the class into the database. 
+	 */
+
 	require('dbconn.php');
 
 	$errors = array(); 
 
-	// REGISTER USER
+	// if we recieved the right POST request
 	if (isset($_POST['add_class'])) {
 		// receive all input values from the form
 		$department = mysqli_real_escape_string($db, $_POST['department']);
@@ -12,10 +18,12 @@
 		$date = mysqli_real_escape_string($db, $_POST['date']);
 		$timeinput = mysqli_real_escape_string($db, $_POST['time']);
 		
+		// tokenize date for use in insertion into database
 		$datetoken = mysqli_real_escape_string($db, $_POST['date']);
 		$year = strtok($datetoken, "-");
 		$month = strtok("-");
 		
+		// janky auto-calculate quarter for inserting into database
 		switch ($month) {
 			case 1:
 			case 2:
@@ -46,6 +54,7 @@
 		if (empty($date)) { array_push($errors, "Date is required"); }
 		if (empty($timeinput)) { array_push($errors, "Time is required"); }
 		
+		// based on form input, select the correct starting and ending time of the lab
 		$starttime = '00:00:00';
 		$endtime = '00:00:00';
 		switch ($timeinput) {
@@ -63,21 +72,27 @@
 				break;
 		}
 		
+		// create full class name based on input
 		$class_name = $department.' '.$catalognum;
+
+		// professor for a class is the user creating it
 		$professor = $_SESSION['username'];
 
 		// add class if there are no errors in the form
 		if (count($errors) == 0) {
 			$query = "INSERT INTO CLASSES (class_name, section_id, section_date, start_time, end_time, quarter, year, ta, professor) 
-					  VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)";
+					  VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)"; // using prepared statements
 			
 			$stmt = $db->stmt_init();
+
+			// die if the statement wasn't successfully prepared
 			if (!$stmt->prepare($query)) {
 				die("Faied to prepare statement: ".$query);
 			} else {
-				$stmt->bind_param('sissssiss', $class_name, $section_id, $date, $starttime, $endtime, $quarter, $year, $ta, $professor);
+				$stmt->bind_param('sissssiss', $class_name, $section_id, $date, $starttime, $endtime, $quarter, $year, $ta, $professor); // bind the input parameters to the query
 			}
 
+			// if the statement did not execute successfully, die and print the error
 			if(!$stmt->execute()) {
 				die("Error in statement execution: ".$stmt->error);
 			}	

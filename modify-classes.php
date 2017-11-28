@@ -1,9 +1,18 @@
 <?php
+	/* modify-classes.php: handles the user-facing portion of adding classes. 
+	 * 
+	 * Takes user input for a a department, catalog number, section ID, date, time,
+	 * and default TA, and submits them via POST request.
+	 */
+
 	require('auth.php');
+
+	// prevent non-professors from accessing the page
 	if ($_SESSION['role'] != "prof") {
 		header("HTTP/1.1 403 Forbidden" );
 		exit;
 	}
+
 	require('modify-classes-serv.php');
 ?>
 <!DOCTYPE html>
@@ -63,20 +72,28 @@
 					<label>TA</label>
 					<select name="ta">
 						<?php
+							// select an available TA from all the TAs in the system 
+
 							require('dbconn.php');
-							$query = "SELECT first, last, username FROM USERS WHERE role = 'ta'";
+
+							$query = "SELECT first, last, username FROM USERS WHERE role = 'ta'"; // using prepared statements
+							
 							$stmt = $db->stmt_init();
 
+							// die if the statement wasn't successfully prepared
 							if (!$stmt->prepare($query)) {
 								die("Faied to prepare statement: ".$query);
-							} 
+							}
 
+							// if the statement did not execute successfully, die and print the error
 							if(!$stmt->execute()) {
 								die("Error in statement execution: ".$stmt->error);
 							}
 
+							// get results
 							$results = $stmt->get_result();
 
+							// return results in the dropdown select
 							foreach ($results as $i) {
 								echo('<option value="'.$i['username'].'">'.$i['first'].' '.$i['last'].'</option>');
 							}
