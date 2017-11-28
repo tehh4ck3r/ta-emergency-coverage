@@ -1,9 +1,18 @@
 <?php
+	/* delete-classes.php: handles the user-facing portion of deleting classes. 
+	 * 
+	 * Takes user input for a section ID, date, and time for a class and submits
+	 * them via POST request.
+	 */
+
 	require('auth.php');
+
+	// prevent non-professors from accessing the page
 	if ($_SESSION['role'] != "prof") {
 		header("HTTP/1.1 403 Forbidden" );
 		exit;
 	}
+
 	require('delete-classes-serv.php');
 ?>
 <!DOCTYPE html>
@@ -18,7 +27,9 @@
 		
 		<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
 		<?php require('navbar.php');?>
+
 		<title>Delete Classes</title>
 	</head>
 	<body class="body-bg">
