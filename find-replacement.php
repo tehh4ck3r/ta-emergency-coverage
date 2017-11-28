@@ -1,4 +1,9 @@
 <?php
+	/* find-replacement.php: handles the user-facing portion of finding replacement TAs.
+	 * 
+	 * Takes user input for a date and time and submits them via POST request.
+	 */
+	
 	require('auth.php');
 ?>
 <!DOCTYPE html>
@@ -20,12 +25,9 @@
 	</head>
 	
 	<body class="body-bg">	
-		<!--The Big Pink-->
 		<div class="header">
 			<h2>Find Replacement Teaching Assistants</h2>
 		</div>
-
-		<!--The content-->
 		<div class="content">
 			<form action="find-replacement.php" method="post">
 				<div class="input-group">

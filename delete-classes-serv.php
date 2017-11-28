@@ -45,7 +45,7 @@
 			if (!$stmt->prepare($query)) {
 				die("Faied to prepare statement: ".$query);
 			} else {
-				$stmt->bind_param('iss', $section_id, $date, $starttime); // bind the input params to the query
+				$stmt->bind_param('iss', $section_id, $date, $starttime); // bind the input parameters to the query
 			}
 
 			// if the statement did not execute successfully, die and print the error
