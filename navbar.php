@@ -1,16 +1,23 @@
+<!-- 
+	/* navbar.php: the navigation bar that is displayed once logging in. 
+	 * 
+	 * Contains links to the various web pages in the system. Links differ
+	 * if you are a professor or a TA.
+	 */
+-->
 <nav class="navbar navbar-inverse">
 	<div class="container-fluid" style="width:100%">
 		<div class="navbar-header">
 			<a class="navbar-brand" href="calendar.php"><span class="glyphicon glyphicon-home"></span></a>
 		</div>
 		<ul class="nav navbar-nav" style="display:inline">
-		<?php 
+		<?php
+				// if user is a professor, show the professor-only links
 				if ($_SESSION['role'] == 'prof') {
 					echo('<li><a href="ta-list.php">View All Teaching Assistants</a></li>');
 					echo('<li><a href="modify-classes.php">Add Classes</a></li>');
 					echo('<li><a href="delete-classes.php">Remove Classes</a></li>');
-				}
-				else {
+				} else {
 					echo('<li><a href="inputtime.php">Edit Availability</a></li>');
 					echo('<li><a href="find-replacement.php">Find Replacements</a></li>');
 				}
