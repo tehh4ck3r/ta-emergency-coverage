@@ -1,6 +1,15 @@
 <?php 
+	/* login.php: handles the user-facing portion of registering users.
+
+	 * Takes user input for username, first and last name, email, phone, password,
+	 * primary notification method, and role and submits them via POST request.
+	 */
+
 	require('register-serv.php');
+
 	session_start();
+	
+	// if user is already logged in, redirect to calendar; otherwise, start a fresh session
 	if (isset($_SESSION['username']) && isset($_SESSION['password']) && isset($_SESSION['role'])) {
 		header('location: calendar.php');
 	} else {

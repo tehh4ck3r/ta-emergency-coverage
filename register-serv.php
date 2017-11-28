@@ -1,9 +1,15 @@
 <?php
+	/* register-serv.php: handles the server-side portion of registering users.
+	 * 
+	 * Takes user input for username, first and last name, email, phone, password, 
+	 * primary notification method, and role and stores it in the database. 
+	 */
+
 	require('dbconn.php');
 
 	$errors = array(); 
 
-	// REGISTER USER
+	// if we recieved the right POST request
 	if (isset($_POST['reg_user'])) {
 		// receive all input values from the form
 		$username = mysqli_real_escape_string($db, $_POST['username']);
@@ -25,29 +31,32 @@
 		if (empty($password_1)) { array_push($errors, "Password is required"); }
 		if (empty($role)) { array_push($errors, "User type is required"); }
 
-		if ($password_1 != $password_2) {
-			array_push($errors, "The two passwords do not match");
-		}
+		if ($password_1 != $password_2) { array_push($errors, "The two passwords do not match"); }
 
 		// register user if there are no errors in the form
 		if (count($errors) == 0) {
 			$password = md5($password_1);	//encrypt the password before saving in the database
+
 			$query = "INSERT INTO USERS (username, password, email, phone, notify, role, first, last) 
-					  VALUES(?, ?, ?, ?, ?, ?, ?, ?)";
+					  VALUES(?, ?, ?, ?, ?, ?, ?, ?)"; // using prepared statements
 
 			$stmt = $db->stmt_init();
+
+			// die if the statement wasn't successfully prepared
 			if (!$stmt->prepare($query)) {
 				die("Faied to prepare statement: ".$query);
 			} else {
-				$stmt->bind_param('sssissss', $username, $password, $email, $phone, $notify, $role, $firstname, $lastname);
+				$stmt->bind_param('sssissss', $username, $password, $email, $phone, $notify, $role, $firstname, $lastname); // bind the input parameters to the query
 			} 
 
+			// if the statement did not execute successfully, die and print the error
 			if(!$stmt->execute()) {
 				die("Error in statement execution: ".$stmt->error);
 			}	
 
 			$stmt->close();
 
+			// redirect to login page
 			header('location: login.php');
 		}
 	}
