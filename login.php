@@ -1,5 +1,12 @@
-<?php 
+<?php
+	/* login.php: handles the user-facing portion of logging in.
+	 * 
+	 * Takes user input for username and password and submits them via POST request.
+	 */
+
 	require('login-serv.php');
+
+	// if user is already logged in, redirect to calendar
 	if (isset($_SESSION['username']) && isset($_SESSION['password']) && isset($_SESSION['role'])) {
 		header('location: calendar.php');
 	}
