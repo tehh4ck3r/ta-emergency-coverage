@@ -1,4 +1,10 @@
 <?php
+	/* inputtime.php: handles the user-facing portion of recording TA availability.
+	 * 
+	 * Takes user input for a date and time and whether they are or are not available
+	 * during that time and submits them via POST request.
+	 */
+
 	require('auth.php');
 	require('inputtime-serv.php');
 ?>
