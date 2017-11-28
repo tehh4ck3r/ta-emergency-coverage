@@ -1,4 +1,10 @@
 <?php
+	/* dbconn.php: used to connect to the MySQL database.
+	 * 
+	 * Uses PHP's mysqli interface to establish a database connection 
+	 * to a MySQL database.
+	 */
+	
 	/* C9 Database */
 	$servername = getenv('IP');
 	$username = getenv('C9_USER');
