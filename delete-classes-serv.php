@@ -41,7 +41,7 @@
 			
 			$stmt = $db->stmt_init();
 
-			// if the statement was successfully prepared
+			// die if the statement wasn't successfully prepared
 			if (!$stmt->prepare($query)) {
 				die("Faied to prepare statement: ".$query);
 			} else {
