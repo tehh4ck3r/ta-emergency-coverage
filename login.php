@@ -48,7 +48,7 @@
 
 				<!-- Submit form -->
 				<div class="input-group">
-					<button type="submit" class="btn" name="login_user" value="Login">
+					<button type="submit" class="btn" name="login_user">Login</button>
 				</div>
 			</form>
 			<!-- Register if not a member -->

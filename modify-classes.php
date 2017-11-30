@@ -124,7 +124,7 @@
 				
 				<!-- Submit form -->
 				<div class="input-group">
-					<button type="submit" class="btn" name="add_class" value="Add Class">
+					<button type="submit" class="btn" name="add_class">Add Class</button>
 				</div>
 			</form>
 		</div>

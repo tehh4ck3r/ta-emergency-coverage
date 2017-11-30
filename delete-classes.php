@@ -67,7 +67,7 @@
 
 				<!-- Submit form -->
 				<div class="input-group">
-					<button type="submit" class="btn" name="delete_class" value="Delete Class">
+					<button type="submit" class="btn" name="delete_class">Delete Class</button>
 				</div>
 			</form>
 		</div>

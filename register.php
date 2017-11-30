@@ -100,7 +100,7 @@
 
 				<!-- Submit form -->
 				<div class="input-group">
-					<button type="submit" class="btn" name="reg_user" value="Register">
+					<button type="submit" class="btn" name="reg_user">Register</button>
 				</div>
 			</form>
 			<!-- Login if already a member -->
