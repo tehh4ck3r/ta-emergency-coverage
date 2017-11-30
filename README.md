@@ -21,7 +21,7 @@
 
 11. Open a terminal and navigate to your webpage's root directory with the command `cd /webpages/YOUR_USERNAME/` (where `YOUR_USERNAME` is the username you used in step 9).
 
-12. Run the following commands, in order: 
+12. Run the following commands, in the order listed: 
 - `chmod 711 /cgi-bin/php.cgi`
 - `chmod 644 .htaccess`
 - `chmod 700 *.php`
@@ -29,6 +29,7 @@
 - `chmod 755 cgi-bin/`
 - `chmod -R 755 img`
 - `chmod 755 *.js`
+
 13. Run the command `setup mysql5`.
 
 14. Run the command `mysql -h dbserver.engr.scu.edu -p -u YOUR_USERNAME YOUR_DATABASE_NAME` (where `YOUR_USERNAME` and `YOUR_DATABASE_NAME` are the MySQL server username and MySQL database name you acquired in step 2).
