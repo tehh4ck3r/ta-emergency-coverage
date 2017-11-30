@@ -14,6 +14,11 @@ $(document).ready(function() {
 		},
 
 		// events.php serves events for the calendar
-		events: "events.php"
+		events: "events.php",
+
+		// show a tooltip containing the class name on hover
+		eventRender: function(event, element) {
+			$(element).tooltip({title: event.title});
+		}
 	});
 });
