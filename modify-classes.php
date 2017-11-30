@@ -67,7 +67,15 @@
 						<option value="5to8">05:15-08:00</option>
 					</select>
 				</div>
-
+				<div class="checkbox">
+					<label><input type="checkbox" name="repeatornot" value="yes">Repeat once per week?</label>
+				</div>
+				
+				<div class="input-group">
+					<label>Repeat until date:</label>
+					<input type="date" name="repeatdate">
+				</div>
+				
 				<div class="input-group">
 					<label>TA</label>
 					<select name="ta">
