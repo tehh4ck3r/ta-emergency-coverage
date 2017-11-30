@@ -45,6 +45,14 @@
 						<option value="allday">All of the above</option>
 					</select>
 				</div>
+				<div class="checkbox">
+					<label><input type="checkbox" name="repeatornot" value="yes">Repeat once per week?</label>
+				</div>
+				
+				<div class="input-group">
+					<label>Repeat until date:</label>
+					<input type="date" name="repeatdate">
+				</div>
 				<div class="radio">
 					<label><input type="radio" name="availgroup" value="avail">I am available for labs occurring at this time on the above date</label>
 					<label><input type="radio" name="availgroup" value="unavail">I am NOT available labs occurring at this time on the above date</label>
