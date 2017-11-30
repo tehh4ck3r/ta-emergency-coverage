@@ -7,9 +7,9 @@
 	
 	/* EDC Database */
 	$servername = "dbserver.engr.scu.edu";
-	$username = "USERNAME";
-	$password = "PASSWORD";
-	$database = "DBNAME";
+	$username = "YOUR_USERNAME";
+	$password = "YOUR_PASSWORD";
+	$database = "YOUR_DATABASE_NAME";
 
 	// Create connection
 	$db = new mysqli($servername, $username, $password, $database);
