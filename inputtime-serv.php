@@ -102,10 +102,14 @@
 		$date = mysqli_real_escape_string($db, $_POST['date']);
 		$timeinput = mysqli_real_escape_string($db, $_POST['time']);
 		$avail = mysqli_real_escape_string($db, $_POST['availgroup']);
+		$repeatornot = mysqli_real_escape_string($db, $_POST['repeatornot']);
+		$repeatuntil = mysqli_real_escape_string($db, $_POST['repeatdate']);
 
 		// form validation: ensure that the form is correctly filled
 		if (empty($date)) { array_push($errors, "Date is required"); }
+		if (preg_match("/^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])$/", $date) === 0) { array_push($errors, "Date must be in format YYYY-MM-DD"); }
 		if (empty($avail)) { array_push($errors, "Availability is required"); }
+		if (($repeatornot == 'yes') && empty($repeatuntil)) { array_push($errors, "Repeat date is required"); }
 		
 		// based on form input, select the correct starting time of the availability
 		$time = '00:00:00';
@@ -126,27 +130,77 @@
 
 		// submit availability if there are no errors
 		if (count($errors) == 0 && $avail == 'avail') {
-			// if the all day option is selected, submit all 3 lab times
-			if ($time == 'allday') {
-				$timearray = array('09:15:00', '14:15:00', '17:15:00');
-				for ($i = 0; $i < 3; $i++) {
-					putInTime($date, $timearray[$i], $db);
+			if ($repeatornot == 'yes') {
+				// create date objects for the loop
+				$startrepeatdate = new DateTime($date);
+				$endrepeatdate= new DateTime($repeatuntil);
+				
+				// while our starting date is before the ending date for the repeat
+				while($startrepeatdate < $endrepeatdate) {
+					// convert back to a string to put it in the db
+					$datestring = $startrepeatdate->format('Y-m-d');
+					
+					// if the all day option is selected, submit all 3 lab times
+					if ($time == 'allday') {
+						$timearray = array('09:15:00', '14:15:00', '17:15:00');
+						for ($i = 0; $i < 3; $i++) {
+							putInTime($datestring, $timearray[$i], $db);
+						}
+					} else {
+						putInTime($datestring, $time, $db);
+					}
+					
+					// repeat 1 time a week so increment the date by 7 days
+					$startrepeatdate->add(new DateInterval('P7D'));
 				}
 			} else {
-				putInTime($date, $time, $db);
+				// if the all day option is selected, submit all 3 lab times
+				if ($time == 'allday') {
+					$timearray = array('09:15:00', '14:15:00', '17:15:00');
+					for ($i = 0; $i < 3; $i++) {
+						putInTime($date, $timearray[$i], $db);
+					}
+				} else {
+					putInTime($date, $time, $db);
+				}
 			}
 		}
 		
 		// submit unavailability if there are no errors
 		if (count($errors) == 0 && $avail == 'unavail') {
-			// if the all day option is selected, submit all 3 lab times
-			if ($time == 'allday') {
-				$timearray = array('09:15:00', '14:15:00', '17:15:00');
-				for ($i = 0; $i < 3; $i++) {
-					removeTime($date, $timearray[$i], $db);
+			if ($repeatornot == 'yes') {
+				// create date objects for the loop
+				$startrepeatdate = new DateTime($date);
+				$endrepeatdate= new DateTime($repeatuntil);
+				
+				// while our starting date is before the ending date for the repeat
+				while($startrepeatdate < $endrepeatdate) {
+					// convert back to a string to put it in the db
+					$datestring = $startrepeatdate->format('Y-m-d');
+					
+					// if the all day option is selected, submit all 3 lab times
+					if ($time == 'allday') {
+						$timearray = array('09:15:00', '14:15:00', '17:15:00');
+						for ($i = 0; $i < 3; $i++) {
+							removeTime($datestring, $timearray[$i], $db);
+						}
+					} else {
+						removeTime($datestring, $time, $db);
+					}
+					
+					// repeat 1 time a week so increment the date by 7 days
+					$startrepeatdate->add(new DateInterval('P7D'));
 				}
 			} else {
-				removeTime($date, $time, $db);
+				// if the all day option is selected, submit all 3 lab times
+				if ($time == 'allday') {
+					$timearray = array('09:15:00', '14:15:00', '17:15:00');
+					for ($i = 0; $i < 3; $i++) {
+						removeTime($date, $timearray[$i], $db);
+					}
+				} else {
+					removeTime($date, $time, $db);
+				}
 			}
 		}
 	}

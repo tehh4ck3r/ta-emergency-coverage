@@ -1,7 +1,7 @@
-	/* calendar.js: renders the calendar used in calendar.php. 
-	 * 
-	 * Uses the FullCalendar JS library.
-	 */
+/* calendar.js: renders the calendar used in calendar.php. 
+ * 
+ * Uses the FullCalendar JS library.
+ */
 $(document).ready(function() {
 	var calendar = $('#calendar').fullCalendar({
 		// calendar may not be edited
@@ -14,6 +14,11 @@ $(document).ready(function() {
 		},
 
 		// events.php serves events for the calendar
-		events: "events.php"
+		events: "events.php",
+
+		// show a tooltip containing the class name on hover
+		eventRender: function(event, element) {
+			$(element).tooltip({title: event.title});
+		}
 	});
 });

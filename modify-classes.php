@@ -28,37 +28,46 @@
 		<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-		<?php require('navbar.php');?>
+		<?php require('navbar.php');?> <!-- Navbar -->
 
 		<title>Modify Classes</title>
 	</head>
 	<body class="body-bg">
+		<!-- Header -->
 		<div class="header">
 			<h2>Add Classes</h2>
 		</div>
+
+		<!-- Content -->
 		<div class="content">
 			<form action="modify-classes.php" method="post">
-				<?php include('errors.php'); ?>
+				<?php include('errors.php'); ?> <!-- Used to display errors -->
+
+				<!-- Department input -->
 				<div class="input-group">
 					<label>Department</label>
 					<input type="text" name="department"> 
 				</div>
 				
+				<!-- Catalog number input-->
 				<div class="input-group">
 					<label>Catalog Number</label>
 					<input type="text" name="catalognum">
 				</div>
 				
+				<!-- Section ID input -->
 				<div class="input-group">
 					<label>Section ID</label>
 					<input type="text" name="section_id">
 				</div>
 				
+				<!-- Date input -->
 				<div class="input-group">
 					<label>Date</label>
 					<input type="date" name="date">
 				</div>
 
+				<!-- Time input -->
 				<div class="input-group">
 					<label>Time</label>
 					<select name="time">
@@ -68,6 +77,18 @@
 					</select>
 				</div>
 
+				<!-- Repeat yes/no checkbox -->
+				<div class="checkbox">
+					<label><input type="checkbox" name="repeatornot" value="yes">Repeat once per week?</label>
+				</div>
+				
+				<!-- Repeat end date input -->
+				<div class="input-group">
+					<label>Repeat until date:</label>
+					<input type="date" name="repeatdate">
+				</div>
+				
+				<!-- Default TA input -->
 				<div class="input-group">
 					<label>TA</label>
 					<select name="ta">
@@ -101,8 +122,9 @@
 					</select>
 				</div>
 				
-				<div>
-					<input type="submit" class="btn" name="add_class" value="Add Class">
+				<!-- Submit form -->
+				<div class="input-group">
+					<button type="submit" class="btn" name="add_class">Add Class</button>
 				</div>
 			</form>
 		</div>

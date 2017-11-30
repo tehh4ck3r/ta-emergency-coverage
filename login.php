@@ -24,27 +24,35 @@
 		<title>Login</title>
 	</head>
 	<body class="body-bg">
-		<!--things to add:-->
-		<!--security: add professor add code?-->
+		<!-- Header -->
 		<div class="header">
 			<h2>Login</h2>
 		</div>
+
+		<!-- Content -->
 		<div class="content">
 			<form action="login.php" method="post">
-				<?php include('errors.php'); ?>
+				<?php include('errors.php'); ?> <!-- Used to display errors -->
+				
+				<!-- Username input -->
 				<div class="input-group">
 					<label>Username</label>
 					<input type="text" name="username">
 				</div>
+
+				<!-- Password input -->
 				<div class="input-group">
 					<label>Password</label>
 					<input type="password" name="password">
 				</div>
-				<div>
-					<input type="submit" class="btn" name="login_user" value="Login">
+
+				<!-- Submit form -->
+				<div class="input-group">
+					<button type="submit" class="btn" name="login_user">Login</button>
 				</div>
-				<p>Not yet a member? <a href="register.php">Register</a></p>
 			</form>
+			<!-- Register if not a member -->
+			<p>Not yet a member? <a href="register.php">Register</a></p>
 		</div>
 	</body>
 </html>	
