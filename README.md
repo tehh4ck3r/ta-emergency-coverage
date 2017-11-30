@@ -19,7 +19,7 @@
 
 10. Copy the files from the extracted archive into your webpage's root directory, i.e. `/webpages/YOUR_USERNAME/` (where `YOUR_USERNAME` is the username you used in step 9).
 
-11. Open a terminal and navigate to your webpage's root directory with the command cd `/webpages/YOUR_USERNAME/` (where `YOUR_USERNAME` is the username you used in step 9).
+11. Open a terminal and navigate to your webpage's root directory with the command `cd /webpages/YOUR_USERNAME/` (where `YOUR_USERNAME` is the username you used in step 9).
 
 12. Run the following commands, in order: 
 - `chmod 711 /cgi-bin/php.cgi`
