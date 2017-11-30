@@ -1,3 +1,4 @@
+/* Drop tables and triggers if they already exist */
 DROP TABLE IF EXISTS STUDENTAVAIL;
 DROP TABLE IF EXISTS STUDENTHOURS;
 DROP TABLE IF EXISTS CLASSES;
@@ -6,6 +7,7 @@ DROP TABLE IF EXISTS EVENTS;
 DROP TRIGGER IF EXISTS calendar_id;
 DROP TRIGGER IF EXISTS calendar_id_delete;
 
+/* Create users table */
 CREATE TABLE USERS(
 	username			VARCHAR(16),
 	password			VARCHAR(128),
@@ -18,6 +20,7 @@ CREATE TABLE USERS(
 	PRIMARY KEY (username)
 );
 
+/* Create classes table */
 CREATE TABLE CLASSES(
 	class_name		VARCHAR (15),
 	section_id		INT,
@@ -38,9 +41,9 @@ CREATE TABLE CLASSES(
 		FOREIGN KEY (professor)
 			REFERENCES USERS (username)
 			ON DELETE CASCADE
-	-- TODO: Ensure prof in this table has role set as prof in users
 );
 
+/* Create student availability table */
 CREATE TABLE STUDENTAVAIL(
 	username		VARCHAR(16),
 	date			DATE,
@@ -53,6 +56,7 @@ CREATE TABLE STUDENTAVAIL(
 			ON DELETE CASCADE
 );
 
+/* Create student hours table */
 CREATE TABLE STUDENTHOURS(
 	username		VARCHAR(16),
 	hours_worked	INT,
@@ -63,6 +67,7 @@ CREATE TABLE STUDENTHOURS(
 			ON DELETE CASCADE
 );
 
+/* Create events table */
 CREATE TABLE EVENTS(
 	id		INT NOT NULL AUTO_INCREMENT,
 	title	VARCHAR(255),
@@ -71,11 +76,13 @@ CREATE TABLE EVENTS(
 	PRIMARY KEY (id)
 );
 
+/* Create trigger to automatically add classes to events list */
 CREATE TRIGGER calendar_id
 AFTER INSERT ON CLASSES
 FOR EACH ROW
 INSERT INTO EVENTS (title, start, end) VALUES (NEW.class_name, TIMESTAMP(NEW.section_date, NEW.start_time), TIMESTAMP(NEW.section_date, NEW.end_time));
 
+/* Create trigger to automatically delete events when classes are deleted */
 CREATE TRIGGER calendar_id_delete
 AFTER DELETE ON CLASSES
 FOR EACH ROW

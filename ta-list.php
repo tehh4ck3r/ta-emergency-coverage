@@ -1,4 +1,8 @@
 <?php
+	/* ta-list.php: handles the user-facing portion of the TA list page.
+	 * 
+	 * Displays a list of all TAs in the system.
+	 */
 	require('auth.php');
 ?>
 <!DOCTYPE html>
@@ -14,23 +18,21 @@
 		<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-		<?php require('navbar.php');?>
+		<?php require('navbar.php');?> <!-- Navbar -->
 		
 		<title>TA List</title>
 	</head>
 	
 	<body class="body-bg">	
-		<!--The Big Pink-->
+		<!-- Header -->
 		<div class="header">
 			<h2>List of Teaching Assistants</h2>
 		</div>
 
-		<!--The content-->
+		<!-- Content -->
 		<div class="content">
+			<!-- Show list of TAs via PHP -->
 			<?php require('ta-list-serv.php'); ?>
 		</div>
-
-		<!--Notify Professors if there is one day left-->
-		<!--query db for time and send echo notification through email-->
 	</body>
 </html>

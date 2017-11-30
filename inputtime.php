@@ -21,21 +21,28 @@
 		<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-		<?php require('navbar.php');?>
+		<?php require('navbar.php');?> <!-- Navbar -->
 
 		<title>TA Change Times</title>
 	</head>
 	<body class="body-bg">
+		<!-- Header -->
 		<div class="header">
 			<h2>Modify Times</h2>
 		</div>
+
+		<!-- Content -->
 		<div class="content">
 			<form action="inputtime.php" method="post">
-				<?php include('errors.php');?>
+				<?php include('errors.php');?> <!-- Used to display errors -->
+				
+				<!-- Date input -->
 				<div class="input-group">
 					<label>Date</label>
 					<input type="date" name="date">
 				</div>
+
+				<!-- Time input -->
 				<div class="input-group">
 					<label>Time</label>
 					<select name="time">
@@ -45,18 +52,25 @@
 						<option value="allday">All of the above</option>
 					</select>
 				</div>
+
+				<!-- Repeat yes/no checkbox -->
 				<div class="checkbox">
 					<label><input type="checkbox" name="repeatornot" value="yes">Repeat once per week?</label>
 				</div>
 				
+				<!-- Repeat end date input -->
 				<div class="input-group">
 					<label>Repeat until date:</label>
 					<input type="date" name="repeatdate">
 				</div>
+
+				<!-- Availabile/unavailable radio input -->
 				<div class="radio">
 					<label><input type="radio" name="availgroup" value="avail">I am available for labs occurring at this time on the above date</label>
 					<label><input type="radio" name="availgroup" value="unavail">I am NOT available labs occurring at this time on the above date</label>
 				</div>
+
+				<!-- Submit form -->
 				<div class="input-group">
 					<button type="submit" class="btn" name="ta_times">Submit</button>
 				</div>
